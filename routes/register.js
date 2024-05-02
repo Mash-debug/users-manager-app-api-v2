@@ -29,10 +29,10 @@ router.post("/register", async (req, res) => {
         // Ajouter un utilisateur à la base de données
         const isAdded = await addUser(name, firstname, email, password);
         if(isAdded) {
-            // Créer la session et rediriger vers la page 'users'
+            // Créer la session et rediriger vers la page 'account'
             req.session.isAuth = true;
             req.session.email = email;
-            return res.status(200).json({success: true, isAuth: true, email, redirect: '/users'});
+            return res.status(200).json({success: true, isAuth: true, email, redirect: '/dashboard/account'});
         } else {
             return res.status(500).json({success: false, errorMessage: errorServer})
         }

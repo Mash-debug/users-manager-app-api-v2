@@ -9,7 +9,7 @@ router.patch("/edit", isUserAuthenticated, async (req, res) => {
         return res.status(401).json({success: false, errorMessage: errorUpdateNotSameUser})
     }
  
-    const user = await editUser(req.body.email, {name: req.body.name, firstname: req.body.firstname});
+    const user = await editUser(req.body.email, {name: req.body.name, firstname: req.body.firstname, password: req.body.password, passwordConfirm: req.body.passwordConfirm});
     if(user) {
         return res.status(200).json({success: true, user});
     } else {

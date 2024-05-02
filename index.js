@@ -5,15 +5,21 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const router = require("./routes");
+const cors = require('cors');
 
 mongoose.connect(process.env.DB_URL).then(() => {
     console.log("DB connectée !")
 });
 
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 app.use(session({
+    name: "uam-cookie",
     secret: process.env.SECRET_KEY,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }))
 
 app.use(express.urlencoded({extended: true}));

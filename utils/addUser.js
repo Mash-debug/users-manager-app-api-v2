@@ -1,9 +1,9 @@
-const bcrypt = require("bcrypt");
+const hashPassword = require('../utils/hashPassword');
 const User = require('../models/User');
-const salt = 10;
+
 
 module.exports = async (name, firstname, email, password) => {
-    const hash = await bcrypt.hash(password, salt);
+    const hash = await hashPassword(password);
     const user = new User({name, firstname, email, password: hash});
 
     try {

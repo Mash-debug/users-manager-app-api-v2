@@ -15,10 +15,10 @@ router.post("/login", async (req, res) => {
         const isPasswordCorrect = await verifyPassword(password, user.password);
 
         if(isPasswordCorrect) {
-            // Créer la session et rediriger vers la page 'users'
+            // Créer la session et rediriger vers la page 'account'
             req.session.isAuth = true;
             req.session.email = email;
-            return res.status(200).json({success: true, isAuth: true, email, redirect: '/users'});
+            return res.status(200).json({success: true, isAuth: true, email, redirect: '/dashboard/account'});
         } else {
             return res.status(400).json({success: false, errorMessage: errorLogin});
         }
