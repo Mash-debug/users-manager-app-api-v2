@@ -5,6 +5,7 @@ const { errorUpdateUser, errorUpdateNotSameUser } = require("../locales/fr");
 
 
 router.patch("/edit", isUserAuthenticated, async (req, res) => {
+    console.log(req.session.isAuth);
     if(req.body.email !== req.session.email) {
         return res.status(401).json({success: false, errorMessage: errorUpdateNotSameUser})
     }
