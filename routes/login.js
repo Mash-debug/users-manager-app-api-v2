@@ -2,10 +2,11 @@ const router = require("express").Router();
 const verifyPassword = require("../utils/verifyPassword");
 const userAlreadyExists = require("../utils/userAlreadyExists");
 const { errorLogin, errorUserDoesNotExist, errorEmptyField } = require("../locales/fr");
+const Paths = require("../constants/paths");
 
 
 // Api
-router.post("/login", async (req, res) => {
+router.post(Paths.login, async (req, res) => {
     const { email, password } = req.body;
     if(email && password) {
        // Vérifier la combinaision (email, password)

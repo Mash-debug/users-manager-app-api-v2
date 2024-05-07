@@ -8,5 +8,6 @@ module.exports = {
     errorEmptyField: "Un ou des champs sont vides.",
     errorUpdateUser: "Une erreur est survenue lors de la mise à jour.",
     errorUpdateNotSameUser: "Impossible d'éditer un autre utilisateur que vous.",
-    errorDeleteNotSameUser: "Impossible de supprimer un autre utilisateur que vous."
+    errorDeleteNotSameUser: "Impossible de supprimer un autre utilisateur que vous.",
+    errorEmailNotValid: "L'adresse mail n'est pas conforme."
 }

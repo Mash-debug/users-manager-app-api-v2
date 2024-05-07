@@ -2,10 +2,10 @@ const router = require("express").Router();
 const isUserAuthenticated = require("../utils/isUserAuthenticated");
 const editUser = require("../utils/editUser");
 const { errorUpdateUser, errorUpdateNotSameUser } = require("../locales/fr");
+const Paths = require("../constants/paths");
 
-
-router.patch("/edit", isUserAuthenticated, async (req, res) => {
-    console.log(req.session.isAuth);
+// Editer les informations de l'utilisateur courant
+router.patch(Paths.edit, isUserAuthenticated, async (req, res) => {
     if(req.body.email !== req.session.email) {
         return res.status(401).json({success: false, errorMessage: errorUpdateNotSameUser})
     }

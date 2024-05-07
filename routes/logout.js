@@ -1,10 +1,11 @@
 const logoutUser = require("../utils/logoutUser");
 
 const router = require("express").Router();
+const Paths = require("../constants/paths");
 
 
 // Déconnexion
-router.get("/logout", async (req, res) => {
+router.get(Paths.logout, async (req, res) => {
     await logoutUser(req, res);
 });
 

@@ -4,16 +4,17 @@ const getAllUsers = require("../utils/getAllUsers");
 const deleteUser = require("../utils/deleteUser");
 const { errorDeleteNotSameUser } = require("../locales/fr");
 const logoutUser = require("../utils/logoutUser");
+const Paths = require("../constants/paths");
 
 
 //Route authentifiée
-router.get("/users", isUserAuthenticated, async (req, res) => {
+router.get(Paths.users, isUserAuthenticated, async (req, res) => {
     const allUsers = await getAllUsers();
     return res.status(200).json({users: allUsers});
 });
 
 // Supprimer un utilisateur
-router.delete("/users", isUserAuthenticated, async (req, res) => {
+router.delete(Paths.users, isUserAuthenticated, async (req, res) => {
     if(req.body.email !== req.session.email) {
         return res.status(401).json({success: false, errorMessage: errorDeleteNotSameUser})
     }
