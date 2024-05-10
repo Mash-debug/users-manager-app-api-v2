@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const router = require("./routes");
 const cors = require('cors');
@@ -12,7 +12,7 @@ mongoose.connect(process.env.DB_URL).then(() => {
 });
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     credentials: true
 }));
 app.use(session({
